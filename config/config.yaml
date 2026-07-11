@@ -1,0 +1,26 @@
+# Trading system configuration
+# Alpaca keys are NOT here -- they live in .env (never committed).
+
+universe:
+  - AAPL
+  - MSFT
+  - SPY
+  - QQQ
+  - NVDA
+
+strategy:
+  type: rule            # "rule" or "ml"
+  rule_name: Trend Following   # one of: Trend Following, Mean Reversion, Custom (EMA+RSI+OBV)
+  ml_threshold: 0.6     # long if model P(up) > threshold (ML mode only)
+
+risk:
+  max_position_pct: 0.20      # max 20% of equity per asset
+  max_total_exposure_pct: 1.0 # max 100% of equity deployed (no leverage)
+  stop_loss_pct: 0.10
+  take_profit_pct: 0.20
+
+data:
+  years: 5              # history depth for indicators / model training
+
+mode: paper             # "paper" or "backtest"
+refresh_seconds: 60     # loop cadence in the live dashboard
